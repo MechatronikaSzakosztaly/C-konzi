@@ -232,6 +232,7 @@ A második függvény a `scanf()`, jelentése scan formatted. A konzolról beolv
 Az első argumentuma a format string.
   * `%i` egész szám
   * `%lf` duplapontos törtszám (double)
+  * `%c` karakter
   * `%s` szó (szóköznél befejezi az olvasást)
 
   > **_Vigyázat!_** A `%d` NEM a double jele, hanem a decimális egész számé.
