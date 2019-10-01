@@ -17,8 +17,8 @@ Megoldás
 --------
 ```c
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
-#include <math.h> // Megjegyzés: gcc-vel fordítva -lm flaget kell használni!
 
 int main()
 {
@@ -26,20 +26,20 @@ int main()
 	double vegosszeg, kerekitve;
 
 	printf("\nBenzin literenkanti ara (Ft/l): ");
-	scanf_s("%lf", &benzin_ar);             // UNIX-on scanf
+	scanf_s("%lf", &benzin_ar);
 	printf("Vasarolt mennyiseg (l): ");
-	scanf_s("%lf", &liter);                 // UNIX-on scanf
+	scanf_s("%lf", &liter);
 
 	if (benzin_ar < 200 || benzin_ar > 1000)
 	{
-		printf("Hibas benzin ar.\n");
-		return 2;
+		printf("ERR Hibas benzin ar.\n");
+		exit(EXIT_FAILURE);
 	}
 
 	if (liter < 2 || liter > 65)
 	{
-		printf("Hibas benzin mennyiseg.\n");
-		return 3;
+		printf("ERR Hibas benzin mennyiseg.\n");
+		exit(EXIT_FAILURE);
 	}
 
 	else
@@ -53,7 +53,9 @@ int main()
 		printf("Vegosszeg: %10.2lf Ft\n", vegosszeg);
 		printf("Kerekitve: %10.0lf Ft\n", kerekitve);
 		printf("************************\n");
-		return 0;
+
+		getchar();getchar();
+		exit(EXIT_SUCCESS);
 	}
 }
 ```
