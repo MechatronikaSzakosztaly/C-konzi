@@ -156,3 +156,18 @@ double normalt_veletlen = (double)veletlen / RAND_MAX;
 ```
 
 Az eredmény egy 0 és 1 közötti szám lesz.
+
+
+Feladatok
+---------
+
+### 1. Készíts Twister pörgető programot!
+
+Válasszon egy random testrészt (jobb kéz, jobb láb, bal kéz, bal láb) és egy random színt (piros, sárga, kék, zöld)!
+
+_A testrészeket és a színeket kódold számokkal (1, 2, 3, 4)! A program két  véletlen számot választ 1-4 között, az ennek megfelelő testrészt és színt kiírja._
+
+Várt kimenet:
+```
+jobb láb a kékre!
+```
