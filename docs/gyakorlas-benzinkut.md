@@ -17,43 +17,43 @@ Megoldás
 --------
 ```c
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
+#include <math.h> // Megjegyzés: gcc-vel fordítva -lm flaget kell használni!
 
 int main()
 {
-    double benzin_ar, liter;
-    double vegosszeg, kerekitve;
-    
-    printf("\nBenzin literenkénti ára (Ft/l): ");
-    scanf("%lf", &benzin_ar);
-    printf("Vásárolt mennyiség (l): ");
-    scanf("%lf", &liter);
+	double benzin_ar, liter;
+	double vegosszeg, kerekitve;
 
-    if (benzin_ar < 200 || benzin_ar > 1000)
-    {
-        printf("Hibás benzin ár.\n");
-        return 2;
-    }
+	printf("\nBenzin literenkanti ara (Ft/l): ");
+	scanf_s("%lf", &benzin_ar);             // UNIX-on scanf
+	printf("Vasarolt mennyiseg (l): ");
+	scanf_s("%lf", &liter);                 // UNIX-on scanf
 
-    if (liter < 2 || liter > 65)
-    {
-        printf("Hibás benzin mennyiség.\n");
-        return 3;
-    }
+	if (benzin_ar < 200 || benzin_ar > 1000)
+	{
+		printf("Hibas benzin ar.\n");
+		return 2;
+	}
 
-    else 
-    {
-        vegosszeg = liter * benzin_ar;
-        kerekitve = round(vegosszeg / 5) * 5;
+	if (liter < 2 || liter > 65)
+	{
+		printf("Hibas benzin mennyiseg.\n");
+		return 3;
+	}
 
-        printf("\n******** NYUGTA ********\n");
-        printf("EVO 95     (%6.2lf Ft/l)\n ", benzin_ar);
-        printf(" .............. %5.2lf l\n\n", liter);
-        printf("Végösszeg: %10.2lf Ft\n", vegosszeg);
-        printf("Kerekítve: %10.0lf Ft\n", kerekitve);
-        printf("************************\n");
-        return 0;
-    }
+	else
+	{
+		vegosszeg = liter * benzin_ar;
+		kerekitve = round(vegosszeg / 5) * 5;
+
+		printf("\n******** NYUGTA ********\n");
+		printf("EVO 95     (%6.2lf Ft/l)\n ", benzin_ar);
+		printf(" .............. %5.2lf l\n\n", liter);
+		printf("Vegosszeg: %10.2lf Ft\n", vegosszeg);
+		printf("Kerekitve: %10.0lf Ft\n", kerekitve);
+		printf("************************\n");
+		return 0;
+	}
 }
 ```
