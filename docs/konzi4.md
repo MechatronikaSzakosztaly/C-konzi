@@ -42,7 +42,7 @@ Az adatstruktúrák használatát később fogjuk tanulni.
 
 ### Random
 
-A számítógépek determinisztikus gépek, önmagukban képtelenek valószínűséget bevinni a számításba. A véletlenszámgeneráláshoz ezért ún. pszeudorandom elemeket használnak, amelyek ugyan nem ténylegesen valószínűségi változók, de eléggé konvuláltak ahhoz hogy ne lehessen őket reprodukálni.
+A számítógépek determinisztikus gépek, önmagukban képtelenek valószínűséget bevinni a számításba. A véletlenszám-generáláshoz ezért ún. pszeudorandom elemeket használnak, amelyek ugyan nem ténylegesen valószínűségi változók, de eléggé konvuláltak ahhoz hogy ne lehessen őket reprodukálni.
 
 A véletlen elemet **seednek** hívjuk. Sok nyelv alapból az időt használja seedként, a C-nél ezt nekünk kell beállítanunk. Ugyanazon seed esetén ugyanazokat a számokat fogja kiköpni a generátorunk, ezért fontos az egyedi seed használata.
 

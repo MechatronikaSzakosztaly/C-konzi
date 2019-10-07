@@ -119,7 +119,7 @@ if (fecske_fajta == "afrikai")
 else if (fecske_fajta == "európai")
     sebesseg = 76;
 ```
-> **_Megjegyzés_**  Vizsgálhatunk bármilyen feltételt az `else if`-ben, de leggyakrabban ugyanazt a változót vizsgálják, mint a fenti `if`-ben. Tűl sok eset (>3) vizsgálata esetén már érdemesebb `switch`-et használni.
+> **_Megjegyzés_**  Vizsgálhatunk bármilyen feltételt az `else if`-ben, de leggyakrabban ugyanazt a változót vizsgálják, mint a fenti `if`-ben. Túl sok eset (>3) vizsgálata esetén már érdemesebb `switch`-et használni.
 
 ### Ternary operátor
 
@@ -139,7 +139,7 @@ feltétel ? érték_ha_igaz : érték_ha_hamis;
 int fizetendo = (vizsgan_atment == 0) ? 5500 : 0; 
 int fizetendo = (vizsgan_atment == 0) ? 5500 + 2500 : 0; 
 ```
-Ha a `vizsgan_atment` változó értéke hamis (0), akkor a fizetendő összeg 5500Ft. Ha értéke nem hamis, akkor 0Ft-ot kell fizetni. Az értékek helyére kifejezést is írhatunk.
+Ha a `vizsgan_atment` változó értéke hamis (0), akkor a fizetendő összeg 5500 Ft. Ha értéke nem hamis, akkor 0 Ft-ot kell fizetni. Az értékek helyére kifejezést is írhatunk.
 
 
  Többirányú elágazás - switch
@@ -162,7 +162,7 @@ switch (kifejezés)
 ```
 A switch struktúra **default** ágában megadhatjuk, mi történjen, ha egyik eset (`case`) sem áll fenn.
 
-A switch a teljesült case alatti összes többi case-t is leffuttatja. Ezt általában nem szeretnénk, ezért minden case-be teszünk egy `break` utasítást. Ez azonnal kilép a switch struktúrából. 
+A switch a teljesült case alatti összes többi case-t is lefuttatja. Ezt általában nem szeretnénk, ezért minden case-be teszünk egy `break` utasítást. Ez azonnal kilép a switch struktúrából. 
 
 #### Példa
 Ez a program bizonyos billentyűk bevitelekor válaszol nekünk.
@@ -195,7 +195,7 @@ Bitműveletek
 A bináris számokon végezhetünk olyan aritmetikai műveleteket, amiket a decimális világból nem ismerünk. A négy alap bináris művelet (AND, OR, NOT, XOR) természetes számokra elvégezhető, ekkor minden bitjükre párosával végrehajtódik a művelet.
 
 ### AND
-ÉS művelet, másnéven _bit reset_. Bármelyik számban szereplő nullák helyén nullázza az eredményt.
+ÉS művelet, más néven _bit reset_. Bármelyik számban szereplő nullák helyén nullázza az eredményt.
 ```c
 char a = 0b00010001; // így adunk meg binárisan számot
 char b = 0b00010010;
@@ -204,7 +204,7 @@ char c = a & b;
 A `c` változó értéke `0b00010000` lesz, mert csak az 5. biten van mindkét számban `1`-es számjegy.
 
 ### OR
-VAGY művelet, másnéven _bit set_. Bármelyik számban lévő egyesek helyén 1-re változtatja az eredményt.
+VAGY művelet, más néven _bit set_. Bármelyik számban lévő egyesek helyén 1-re változtatja az eredményt.
 ```c
 char a = 0b00010001;
 char b = 0b00010010;
@@ -300,7 +300,7 @@ printf("adat = %#x", adat);
 ```
 
 #### 3.1. Állítsd be az 5. bitet `1`-re!
-_A biteket jobbról balra számojuk, 1-től 8-ig._
+_A biteket jobbról balra számoljuk, 1-től 8-ig._
 
 #### 3.2. Változtasd meg a 8. bitet az ellenkezőjére!
 
