@@ -47,7 +47,7 @@ scanf("%i", &darab);
 while (darab > 0)
 {
     printf("*");
-    darab = darab - 1;
+    darab--;
 }
 ```
 

@@ -13,14 +13,14 @@ Idézzük fel a változók 4 alaptulajdonságát!
 - érték
 - memóriacím
 
-A változók értékei ezidáig számok, karakterek voltak. Lehet azonban mást is tárolni bennük: memóriacímet. A memóriacímet tároló változókaz pointernek, mutatónak hívjuk.
+A változók értékei ezidáig számok, karakterek voltak. Lehet azonban mást is tárolni bennük: memóriacímet. A memóriacímet tároló változókat pointernek, mutatónak hívjuk.
 
 A fiók analógián keresztül bemutatva (lásd 1. gyakorlat): a legtöbb fiókban számok és egyéb adatok találhatók, a pointer fiókokban viszont egy másik fiók sorszáma van.
 
 A pointerek is változók, tehát ezeknek is van
 
 - nevük
-- típusuk: Van int pointer, double pointer, stb. Bármilyen adattípusú pointert létrehozhatunk. Az int pointer egész szám típusú memóriacellára _mutat_, a double típusú pointer double típusúra.
+- típusuk: Van int pointer, double pointer, stb. Bármilyen adattípusú pointert létrehozhatunk. Az int pointer egész szám típusú memóriacellára mutat, a double típusú pointer double típusúra.
 - értékük: A mutatott cella memóriacíme
 - saját memóriacímük
 
@@ -85,7 +85,7 @@ int *p;
 p = (int *)malloc(4);
 ```
 
-A `malloc(4)` 4 bájt memóriát foglal (ebben fér el egy int), az `(int *)` pedig átalakítja a kapott pointer `int *`, azaz int-re mutató pointer típusra.
+A `malloc(4)` 4 bájt memóriát foglal (ebben fér el egy int), az `(int *)` pedig átalakítja a kapott pointert int-re mutató pointer típusra.
 
 Nem szeretjük kézzel kiszámolni az adattípusok méretét, ezért a 4 helyére a  `sizeof(int)` kifejezést írjuk.
 
@@ -115,6 +115,7 @@ A malloc és calloc által foglalt memóriát a használat után fel kell szabad
 free(p);
 ```
 
+_Felszabadítás nélkül a memória teleszemetelődik a lefoglalt celláinkkal, egy idő után a futtatás lelassul, majd ellehetetlenül._
 
 ### Mutatott érték elérése (dereferencing)
 
@@ -138,29 +139,67 @@ A memóriacím: 0x7ffd1037bdbc
 A mutatott érték: 420
 ```
 
+### Pointer aritmetika
+
+A pointereken lehet végezni pár műveletet.
+
+#### Összeadás
+
+Pointerekhez egész számokat hozzáadhatunk, ezzel ennyit lépünk a memóriában. A lépés nagysága az adattípusnak megfelelő, azaz `int *` pointernél 4 bájt egy lépés.
+
+```c
+int *p = (int *)malloc(2 * sizeof(int));
+*p = 1;
+*(p+1) = 2;
+```
+A `p` mutat az első számra, a `(p+1)` a másodikra.
+
+A `p++` művelet eggyel előrébb lépteti a pointert, lényegében ez is egy összeadás.
+
+
+#### Kivonás
+
+Az összeadáshoz hasonlóan kivonni is lehet egész számot.
+
+#### Különbség
+
+Két pointer különbségét képezhetjük, ennek néha van jelentősége. A művelet eredménye a két cella közti adatok száma.
+
+```c
+int *p_eleje = (int *)malloc(10 * sizeof(int));
+int *p_vege = p_eleje + 9;
+
+int meret = p_vege - p_eleje;
+```
+
+A `p_eleje` a lefoglalt 10 cella közül az elsőre mutat, a `p_vege` pedig az utolsóra. A két pointer különbsége megadja, hogy 10 cellánk van.
+
+> Vigyázat! _A különbség eredménye nem bájtban van (egy int 4 bájt, a méret 40 bájt lenne). A pointer aritmetika az adattípus méretével számol._
+
+Pointerek összeadása értelmetlen, ezért nincs is ilyen művelet.
 
 Tömbök
 ------
 
-Egy darab adat változóban tárolását ismerjük. A legtöbb programban azonban nem csak 1-1 értéket akarunk tárolni, hanem sok, azonos értéket: egy mérési sorozatot, időpontok listáját, egy kép pixelértékeit. A sok adat együttes tárolásának legprimitívebb pódja a tömb.
+Egy darab adat változóban tárolását ismerjük. A legtöbb programban azonban nem csak 1-1 értéket akarunk tárolni, hanem sok, azonos értéket: egy mérési sorozatot, időpontok listáját, egy kép pixelértékeit. A sok adat együttes tárolásának legprimitívebb módja a tömb.
 
 A tömb n darab **azonos típusú és azonos jelentésű** adatot tárol memóriafolytonosan: A memóriában az egyik után következik a másik, egy nagy egybefüggő _tömbként_ jelennek meg.
 
 A tömb a memóriában így jelenik meg:
 
 ```
----+-------+-------+-------+-------+-------+-------+----
-...| adat0 | adat1 | adat2 | adat3 | adat4 | adat5 | ...
----+-------+-------+-------+-------+-------+-------+----
-   ^
-   kezdőcím
+----+-------+-------+-------+-------+-------+-------+----
+... | adat0 | adat1 | adat2 | adat3 | adat4 | adat5 | ...
+----+-------+-------+-------+-------+-------+-------+----
+    ^
+    kezdőcím
 ```
 
 A tömb változó tulajdonképpen **pointer**. Kizárólag a tömb kezdőcímét tárolja. A tömb hosszát nekünk kell észben tartani.
 
 ### Tömb készítése
 
-Kétféle tömb van: statikus és dinamikus tömb.
+Kétféle tömb van: statikus és dinamikus tömb. Ezek létrehozásuk módjában térnek el, egyébként a használatuk egyforma.
 
 #### statikus tömb
 
@@ -172,6 +211,8 @@ Létrehozása:
 int tomb[100];
 char nev[60];
 ```
+
+A változó neve után szögletes zárójelbe írjuk, hogy hány darab hosszú tömböt szeretnénk létrehozni.
 
 #### dinamikus tömb
 
@@ -204,11 +245,11 @@ int elem2 = tomb[2];
 int dinamikus_elem = dinamikus_tomb[0];
 ```
 
-Működésre a statikus és dinamikus tömbök ugyanolyanok.
+Használatra a statikus és dinamikus tömbök egyformák.
 
 Gyakori hiba, hogy nem létező elemeket akarunk elérni, ezt az operációs rendszerünk futásidejű hibával jutalmazza: Index Out Of Range.
 
-> Megjegyzés: _Kapcsolat a pointerekkel. A tömb indexelés művelet ekvivalens a pointer mutatott érték elérésével. A `tomb[i]` művelet teljesen megegyezik a `*(tomb+i)` művelettel: mindkettő a `tomb` által mutatott kezdőcímtől `i` lépésre lévő cella tartalmát adja meg._
+> Megjegyzés: _Kapcsolat a pointerekkel. A `tomb[i]` művelet teljesen megegyezik a `*(tomb+i)` művelettel: mindkettő a `tomb` által mutatott kezdőcímtől `i` lépésre lévő cella tartalmát adja meg._
 
 
 Memóriakezelés
