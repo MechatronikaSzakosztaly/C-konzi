@@ -251,6 +251,31 @@ Gyakori hiba, hogy nem létező elemeket akarunk elérni, ezt az operációs ren
 
 > Megjegyzés: _Kapcsolat a pointerekkel. A `tomb[i]` művelet teljesen megegyezik a `*(tomb+i)` művelettel: mindkettő a `tomb` által mutatott kezdőcímtől `i` lépésre lévő cella tartalmát adja meg._
 
+### Tömbök feltöltése
+
+A statikus tömböknek lehet a létrehozásukkor értékeket megadni.
+
+```c
+int szamok[4] = {2, 4, 6, 8};
+```
+
+Az elemszámot ilyenkor nem muszáj megadni, a fordító kiszámolja helyettünk.
+
+```c
+int szamok[] = {2, 4, 6, 8, 10};
+```
+
+Nagyobb statikus tömböket, és dinamikus tömböket ciklusokkal szoktunk feltölteni. Jellemzően `for` ciklust használunk az alábbi példához hasonlóan.
+
+```c
+int tomb[100];
+for (int i=0; i<100; i++)
+{
+      tomb[i] = ... // érték megadása, pl. exp(i)
+}
+```
+
+Az `i<elemszám` feltétellel a ciklus pont a tömb utolsó eleméig megy el.
 
 Memóriakezelés
 --------------
@@ -334,3 +359,54 @@ A heapen létrehozott változók a felszabadításukig élnek, ezt nekünk kell 
 - Ha a scope-on kívül életben akarjuk tartani a változót, és máshogy nem tudjuk megoldani. (Erre ugye a másik mód a globális változó).
 
 A heapen csak indokolt esetben foglaljunk, és mindig figyeljünk a felaszabadításra is!
+
+
+Feladatok
+---------
+
+### 1. Pointer gyakorlás
+
+1. Hozz létre egy `val` nevű változót tetszőleges értékkel!
+2. Készíts egy pointert, ami az előbb létrehozott adatra mutat!
+3. Írd ki a pointerben tárolt memóriacímet (`"%p"`), és a mutatott adatot.
+4. Változtasd meg a `val` értékét.
+5. Ismételd meg a 3. pontban bemutatott kiírást. Ugyanazt az adatot éri el?
+
+### 2. Tömb gyakorlás
+
+1. Készíts egy 24 hosszúságú, karaktereket tároló (statikus) tömböt!
+2. Töltsd fel az elemeit for ciklussal úgy, hogy a tömb az ABC-t tartalmazza!  
+    _Használd fel, hogy_ `'A' + 1 = 'B'`, `'A' + 2 = 'C'`, _stb.!_
+3. Most töltsd föl fordítva!
+
+### 3. Struktúra gyakorlás
+
+1. Hozz létre egy `struct Hallgato` struktúrát! Mezői:
+   - teljes név (50 karakter)
+   - Neptun kód (6 karakter)
+   - szak neve (50 karakter)
+   - beiratkozás éve (egész szám)
+   - aktív féléven van (igaz = 1 / hamis = 0)
+2. Tárold el a saját adataidat egy ilyen struktúrában!
+3. Hozz létre egy 120 elemű tömböt `struct Hallgato` adatokból! A 45. elemébe írd be a saját adataidat!
+4. Olvasd ki a tömbből a 45. hallgató Neptun kódját!
+
+### Reversestring
+
+```c
+char szoveg[] = "Bolton";
+char forditva[6+1];  // +1 záró karakter
+```
+
+1. Írj egy ciklust, ami a szöveget visszafelé beírja a `forditva` változóba!
+
+2. Csináljuk meg ugyanezt pointerekkel!
+
+```c
+char* forras = szoveg;
+char* cel = forditva + 5;
+```
+
+Az `forras` a szöveg első karakterére, a `cel` a forditva utolsó karakterére mutat. 
+
+A pointerek léptethetők előre a `pointer++`, hátra a `pointer--` utasításokkal. Írj egy olyan ciklust ami ezek segítségével másolja át visszafelé a szöveget a forditvába.
