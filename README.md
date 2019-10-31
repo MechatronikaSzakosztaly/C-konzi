@@ -1,3 +1,5 @@
+**Figyelem: Október 23 szünet, nem lesz konzi sem!**
+
 # C-konzi
 Konzultáció a _Programozás alapjai_ tárgyhoz.
 
