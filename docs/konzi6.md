@@ -391,7 +391,11 @@ Feladatok
 3. Hozz létre egy 120 elemű tömböt `struct Hallgato` adatokból! A 45. elemébe írd be a saját adataidat!
 4. Olvasd ki a tömbből a 45. hallgató Neptun kódját!
 
+<<<<<<< HEAD
 ### 4. Reversestring
+=======
+### Reversestring
+>>>>>>> 66735b15302920c17ee66072238998a27ba7afd7
 
 ```c
 char szoveg[] = "Bolton";
