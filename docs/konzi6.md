@@ -277,6 +277,131 @@ for (int i=0; i<100; i++)
 
 Az `i<elemszám` feltétellel a ciklus pont a tömb utolsó eleméig megy el.
 
+
+Struktúrák
+----------
+
+Az adatstruktúrák segítségével logikailag összetartozó adatokat együtt kezelhetünk. Az adattagok lehetnek különböző adattípusúak. Minden adattag nevet kap, a névnek csak a struktúrán belül kell egyedinek lennie. Az összekapcsolt adatokat együtt, a struktúra példányának nevével tudjuk elérni, mozgatni.
+
+A struktúrákat a fájl tetején (a main függvényen kívül) szokás létrehozni. A struktúra definíciója egyfajta prototípusként szolgál -- az adattagok nevei és típusai szerepelnek benne. A struktúrából ezután a kódunkban példányokat hozhatunk létre, amelyek konkrét adatokat tartalmaznak. 
+
+Egy egyszerű példa struktúra létrehozására.
+
+```c
+struct Cim
+{
+      char orszag[50];
+      char telepules[50];
+      char kozterulet[50];
+      char hazszam[20];
+      int iranyitoszam;
+}
+```
+
+> _A char [] mezőkben szöveget lehet tárolni._
+
+A struktúra létrehozásakor az adattagokat ugyanúgy deklarációval készítjük el, mint ahogy a main függvényben tennénk. Kezdeti értéket nem adhatunk nekik, hiszen ez a struktúra prototípusa. Az adatok majd a példányokba kerülnek.
+
+A fent létrehozott struktúrából készítsünk egy példányt, és töltsük fel az elemeit! A példányt ugyanúgy kell létrehozni, mint bármely változót. Az adattípus esetünkben `struct Cim`. Két szóból áll, a struct és a struktúranév együtt alkotják az adattípust.
+
+```c
+int main()
+{
+      struct Cim BME;
+      BME.orszag = "Magyarorszag";
+      BME.telepules = "Budapest";
+      BME.iranyitoszam = 1111;
+      BME.kozterulet = "Muegyetem rkp.";
+      BME.hazszam = "3";
+      ...
+}
+```
+
+A `struct Cim BME` létrehoz egy példányt, azaz egy `BME` nevű, `struct Cim` típusú változót, üres adattagokkal. A további sorokban az adattagoknak adunk értéket.
+
+Az adattagokat megadhatjuk egyszerre is, a tömbökhöz hasonlóan. Lehet sorrend alapján feltölteni, vagy az adattagok neveit megadva. (Névvel célszerűbb).
+
+```c
+struct Cim BME1 = {"Magyarorszag", "Budapest", "Muegyetem rkp.", "3", 1111};
+
+struct Cim BME2 = {.orszag="Magyarorszag", .telepules="Budapest",
+    .iranyitoszam=1111, .kozterulet="Muegyetem rkp.", .hazszam="3"};
+```
+
+A struktúrák elemeit a példány nevének és az adattag nevének együttesével érhetjük el.
+
+```c
+BME.telepules = "Nyiregyhaza";
+printf("%s, %d %s, %s %s.", BME.orszag, BME.iranyitoszam, BME.telepules, 
+    BME.kozterulet, BME.hazszam);
+```
+
+> _A printf a struktúrát nem tudja kiírni, csak az adattagjait egyesével._
+
+A struktúra létrehozása és példányok létrehozása elvégezhető egyszerre is, ha a záró `}` után írunk példányneveket. Általában jobb a példányosítást külön írni.
+
+```c
+struct Cim
+{
+      char orszag[50];
+      ...
+} BMEcim, BCEcim, OEcim, MOMEcim;
+```
+
+Struktúráknak lehet struktúra adattagja is. A belső struktúrát lehet kívül is definiálni, vagy az előbb bemutatott módon belül is.
+
+```c
+struct Nevjegy
+{
+      char nev[50];
+      char telefonszam[30];
+      struct Cim cim;
+      char email[50];
+}
+```
+
+A struktúrák sima változóként működnek, például készíthetünk tömböt is.
+
+```c
+struct Nevjegy kollegak[100];
+```
+
+#### typedef
+
+A typedefről már volt szó. Segítségével új nevet adhatunk adattípusoknak.
+
+```c
+typedef réginév újnév;
+```
+
+Bevett szokás, hogy a struktúrákat typedeffel átnevezik. A struct kulcsszót így nem kell kiírni többé, hanem elég az új típusnevet használni. Leggyakrabban egyszerűen struktúra nevét használják típusnévként.
+
+```c
+struct Nevjegy 
+{
+      char nev[50]; 
+      ...
+}
+typedef struct Nevjegy Nevjegy;
+
+Nevjegy Bela;
+```
+
+Ezután a példányokat `Nevjegy` típussal hozhatjuk létre.
+
+A typdefet a struktúradefiníció köré lehet írni, leggyakrabban így találkozhatunk vele. Ez ugyanazt eredményezi, mint az előző kódrészlet.
+
+```c
+typedef struct Nevjegy
+{
+      char nev[50];
+      ...
+} Nevjegy;
+```
+
+> _A fölső ,,Nevjegy'' helyett írhatnánk akármi mást, de így szokás írni._
+
+
 Memóriakezelés
 --------------
 
