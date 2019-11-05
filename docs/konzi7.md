@@ -1,3 +1,8 @@
+7\. gyakorlat
+=============
+
+Struktúrák, enumerációk, függvények.
+
 Struktúrák
 ----------
 
@@ -172,7 +177,7 @@ enum MachineState
     RUN = 15,
     DIAGNOSTIC = 16,
     SHUTDOWN = 17
-}
+};
 ```
 
 A dekódolást switch-csel lehet csinálni, ha szükség van rá.
@@ -239,6 +244,7 @@ kimenet_tipus fuggvenynev(tipus param1, tipus param2)
 - A paramétereket (bemeneteket) típusaikkal együtt kell felsorolni.
 - A függvénytörzsbe kerülnek a függvény által végrehajtott utasítások.
 - A nem-void függvények végén a return szolgáltatja a kimeneti adatot. A return azonnal kilép a függvényből.
+- A függvénytörzsben létrehozott változók a függvényből való kilépéskor törlődnek.
 
 Az elkészítendő függvényünk mindig ugyanazt kell hogy kiírja, nincs bemenő adata. Kimenete sincs. Típusa tehát `void`, paraméterei pedig nincsenek.
 
