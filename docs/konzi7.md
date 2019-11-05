@@ -279,6 +279,8 @@ int main()
 A kódot tovább szemlélve rájöttünk, hogy az áruk nyomtatását is jó lenne függvénybe foglalni, hiszen minden árut ugyanúgy kell a nyugtára írni. Ennek a függvénynek már lesznek bemenő adatai: a megnevezés, a mennyiség és az egységár, mivel a kiíráshoz ezekre szükség van. Kimenő adat továbbra sincs.
 
 ```c
+#include <stdio.h>
+
 void print_fejlec()
 { ... }
 
@@ -321,7 +323,7 @@ double brutto(double netto_ar, enum NavKategoria termekkategoria)
         case TehenTej:
             afakulcs = 15; break;
         default:
-            afakulcs = 27
+            afakulcs = 27;
     }
     return afakulcs * netto_ar;
 }
@@ -424,7 +426,7 @@ Ezt kiküszöbölhetjük úgy, hogy már a fájl elején megmondjuk, hogy milyen
 struct Trabant uj_trabant(int kivitel, int szin);
 ```
 
-A prototípus rögzíti a függvény nevét, típusát, és paramétereit. A függvény definíciója lehet a program alján is, így már ettől a ponttól lefelé tudjuk használni a függvényt.
+A prototípus rögzíti a függvény nevét, típusát, és paramétereit. Így már ettől a ponttól lefelé tudjuk használni a függvényt, akárhol is van a definíciója a fájlon belül.
 
 A függvényprototípusokat, struktúradefiníciókat, enumerációkat, konstansokat egy külön .h fájlba szoktuk összegyűjteni. Ennek a neve megegyezik a .c fájléval. A .c fájba include-oljuk így:
 
