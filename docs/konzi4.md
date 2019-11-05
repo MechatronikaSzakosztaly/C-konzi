@@ -141,7 +141,7 @@ int szam = rand() % (b - a + 1) + a
 
 Például 1 és 5 között így kapunk véletlen számokat:
 ```c
-int dobas = rand() % 5 + 1
+int dobas = rand() % 5 + 1;
 ```
 
 A `rand()` egész szám öttel való maradéka lehet 0, 1, 2, 3 vagy 4. Ehhez egyet hozzáadva kapunk 1 és 5 közti számokat.
