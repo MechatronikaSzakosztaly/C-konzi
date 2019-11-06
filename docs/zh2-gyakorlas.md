@@ -33,3 +33,23 @@ A program megkeresi a tombben ezt a termeket es kiirja a darabszamot "4 darabot 
 Ekkor a logikailag hasznalt mezot allitsuk 1-re ennel a termeknel.
 Ha a vonalkodot nem talaljuk a tombben "tedd szepen vissza a polcra".
 Ha mindent beszereztunk (az osszes "kosarban" mezo 1), "a kasszahoz faradhatsz" es vege a programnak.
+
+### 5. Büfé
+Az egyetemi dolgozók 200Ft értékű melegétel utalványokat kapnak, amiből nem lehet visszaadni. A büfében semminek sincs olyan ára, mint 200 egész számú többszöröse, a jegyből visszaadni nem lehet. Tehát a maradékot, ami a jegyen felül van, kp-ban fizetjük. 
+
+Készítsünk ehhez programot! Bemenet (scanf): fizetendő összeg. Kimenet: hány db jegyet és mennyi kp-t kell a büfésnek adni. Pl: 489 Ft = 2db jegy + 90 Ft. Alkalmazzuk az 5 forintos kerekítést! (Ha igényesen csinálod meg, 198 Ft bemenetre a kimenet 1db jegy, nem 198 Ft).
+
+### 6. Felcserélt szorzatok
+Írjon programot, amely meghatározza az összes olyan kétjegyû számpárt, amelyre igaz, hogy a szorzatuk megegyezik a számjegyeik felcserélésével kapott számok szorzatával. A megoldásból zárjuk ki az azonos számjegyû számokat 11, 22, és a triviális megoldást (pl. 32,23) 33, stb. 
+
+Jó megoldás pl. a 12, 42 mert 12 * 42 = 21 * 24.
+
+### 7. Normalizálás
+Készítsünk egy, inputként megadott méretű, egész számokat tartalmazó tömböt. Töltsük fel véletlen számokkal, majd készítsünk egy ugyanekkora méretű, valós számokat tartalmazó tömböt, ahova az eredeti tömb elemeinek legnagyobb elemhez képesti relatív méretét tesszük (normalizálás). 
+
+Teszteléshez válasszunk 20 elemet, és normalizált tömb elemeit írassuk ki.
+
+### 8. Szimmetrikus tömbök
+Döntsük el egy n (input adat) db, egész elemet tartalmazó tömbről, hogy szimmetrikus-e, ha n páratlan. A feltöltés tetszőleges lehet. 
+
+Teszteljük is le a programot, ha n < 20, az elemeket írassuk ki.
