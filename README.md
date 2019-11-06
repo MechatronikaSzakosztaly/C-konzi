@@ -1,3 +1,7 @@
+## Értékelés
+
+Ha részt vettél a konzin, kérlek értékeld ezen a linken: [tinyurl.com/MSZOkonzi](https://tinyurl.com/MSZOkonzi)  Az értékelés a jelenlét  követéséhez is kell.
+
 # C-konzi
 Konzultáció a _Programozás alapjai_ tárgyhoz.
 
