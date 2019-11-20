@@ -8,7 +8,7 @@ A string fogalma
 
 A szövegeket karakterláncban, stringben tárolhatjuk. A C nyelvben a string egy egyszerű tömböt jelent, amiben karakterek vannak, és a végén egy záró karakter (a 0 numerikus értékű `\0`) áll.
 
-Szöveg létrehozása szövegként és tömbként:
+Szöveg inicializálása szövegként és egyszerű tömbként:
 
 ```c
 char szoveg1[] = "Hello!";
@@ -52,7 +52,7 @@ char* strchr(const char* string, char c)
 Megkeresi `c` karakter első előfordulását. Eredménye a megtalált karakterre mutató pointer.
 
 ```c
-char* strchr(const char* string, char c)
+char* strrchr(const char* string, char c)
 ```
 Ugyanez, csak visszafelé keres.
 
