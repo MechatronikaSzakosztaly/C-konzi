@@ -8,31 +8,29 @@ Elmélet
 
 A fájlok a lemezen (HDD, SSD, flash) tárolt állományok. Tartalmukhoz az operációs rendszeren keresztül férhetünk hozzá. A fájlok elhelyezése, írása, olvasása a lemezen a fájlrendszer feladata, ezekkel nem nekünk kell foglalkoznunk.
 
-A fájl tartalma az amit beleírunk. Amikor elmentünk egy új txt fájlt "Hello World" tartalommal, az pontosan ezeket az adatokat fogja tartalmazni: 11 karaktert. A fájlhoz társított információk, mint a fájlnév, jogosultságok, létrehozás dátuma a fájlrendszerben kerülnek tárolásra, és nem a fájl tartalmában jelennek meg.
+A fájl tartalma az amit beleírunk. Amikor elmentünk egy új txt fájlt "Hello World" tartalommal, az pontosan ezeket az adatokat fogja tartalmazni: 11 karaktert. A fájlhoz társított információk, mint a fájlnév, jogosultságok, létrehozás dátuma a fájlrendszerben kerülnek tárolásra, és nem a fájlban jelennek meg.
 
-A fájlokat két típusba lehet sorolni.
+A fájlokat két típusba lehet sorolni:
 
-1. A szövegfájlok szöveges információt tárolnak. Nem csak a txt fájlok tartoznak ide, hanem minden, amit a szövegszerkesztővel megnyitva értelmes dolgokat olvashatsz. Szövegfájlok a C forrásfájlok, a CSV fájlok, a HTML weboldalak, a JavaScript kód, az XML dokumentumok (docx tartalma), az svg képfájlok.
+1. A **szövegfájlok** szöveges információt tárolnak. Nem csak a txt fájlok tartoznak ide, hanem minden, amit a szövegszerkesztővel megnyitva értelmes dolgokat olvashatsz. Szövegfájlok a C forrásfájlok, a CSV fájlok, a HTML weboldalak, a JavaScript kód, az XML dokumentumok (docx tartalma), az svg képfájlok.
 
-2. A bináris fájlok nem szöveges adatokat tárolnak. A számok és egyéb objektumok bináris formában kerülnek benne tárolásra, vagyis úgy, ahogy a memóriában is vannak. Ezeket szövegszerkesztővel megnyitva csak felismerhetetlen hieroglifákat láthatunk. Ilyen fájlok például az .exe programfájlok, a dll könyvtárak, a modellezőprogramok mentései.
+2. A **bináris fájlok** nem szöveges adatokat tárolnak. A számok és egyéb objektumok bináris formában kerülnek benne tárolásra, vagyis úgy, ahogy a memóriában is vannak. Ezeket szövegszerkesztővel megnyitva csak felismerhetetlen hieroglifákat láthatunk. Ilyen fájlok például az .exe programfájlok, a dll könyvtárak, a modellezőprogramok mentései.
 
-A szövegfájlok előnye, hogy rendszerek között könnyedén hordozhatók, mindenféle rendszeren el lehet őket olvasni. Programok közti kommunikációra ilyeneket szoktunk használni. Például a táblázatos adatokat CSV (Comma Separated Value), XML vagy JSON formában szoktuk átadni egyik programból a másikba.
+A szövegfájlok előnye, hogy rendszerek között könnyedén hordozhatók, mindenféle rendszeren el lehet őket olvasni. Programok közti kommunikációra ilyeneket szoktunk használni. Például a táblázatos adatokat CSV (Comma Separated Values), XML vagy JSON formában szoktuk átadni egyik programból a másikba.
 
 A bináris fájlok ellenben kisebb helyet foglalnak el, gyorsabb a mentésük és a betöltésük. Gondoljunk bele: az "1234567890" szám tárolása szovegesen 10 karaktert, azaz 10 bájtot foglal el. Ugyanez binárisan belefér egy 4 bájt méretű integer változóba.
 
-A C-ben minden fájl _stream_, azaz magnószalagként lehet elképzelni a működést. A "szalagot" lehet tekerni előre-hátra, olvasni azokat a bájtokat amik éppen alatta vannak. Szövegfájl esetén bájtonként olvasunk, bináris fájl esetén az adattípus méretének megfelelő blokkonként. Mi most csak a szövegfájlokkal fogunk foglalkozni.
+A C-ben minden fájl _stream_, azaz magnószalagként lehet elképzelni a működést. A "szalagot" lehet tekerni előre-hátra, olvasni azokat a bájtokat amik éppen az olvasófej alatt vannak. Szövegfájl esetén bájtonként olvasunk, bináris fájl esetén az adattípus méretének megfelelő blokkonként. Mi most csak a szövegfájlokkal fogunk foglalkozni.
 
 Fájl megnyitása
 ---------------
 
-A fájl betöltésére és megnyitására az `fopen` függvény való. Ez kér tőlünk egy elérési utat (_path_) ami tartalmazza a fájl nevét is. Ha a program mappájában akarunk fájlt nyitni a path egyszerűen a fájl neve.
+A fájl betöltésére és megnyitására az `fopen` függvény való. Ez kér tőlünk egy elérési utat (_path_) ami tartalmazza a fájl nevét is. Ha a program mappájában akarunk fájlt nyitni, akkor a path egyszerűen a fájl neve.
 
 ```c
 FILE* fopen(const char* path, const char* mode)
 FILE* fopen_s(FILE** fileprt, const char* path, const char* mode)
 ```
-
-A fopen visszatérési értéke egy FILE pointer. Ez tulajdonképpen a fájlra mutat. Az író-olvasó függvények ez alapján tudják, hogy melyik fájlról van szó.
 
 A mód a megnyitás módját tartalmazza. Lehetőségek:
 
@@ -45,10 +43,12 @@ A mód a megnyitás módját tartalmazza. Lehetőségek:
   
 Általában a `r`, `w` és `a` módokat használjuk.
 
+A fopen visszatérési értéke egy FILE pointer. Ez tulajdonképpen a fájlra mutat. Az író-olvasó függvények ez alapján tudják, hogy melyik fájlról van szó.
+
 Fájlba írás
 -----------
 
-A fájlba írásra a `fprintf` függvény való. Ennek első argumentuma a FILE pointer, egyébként ugyanúgy működik, mint a sima `printf`.
+A fájlba írásra az `fprintf` függvény használható. Ennek első argumentuma a FILE pointer, egyébként ugyanúgy működik, mint a sima `printf`.
 
 ```c
 fprintf(FILE* file, const char* format, ...)
@@ -61,7 +61,7 @@ Erre lehet használni az `fscanf` függvényt, de általában célszerűbb `fget
 
 ```c
 fscanf(FILE* file, const char* format, ...)
-fscnaf_s(FILE* file, const char* format, ...)
+fscanf_s(FILE* file, const char* format, ...)
 ```
 ```c
 fgets(char* string, int size, FILE* stream)
@@ -71,9 +71,9 @@ Az fscanf csak egy-egy szót olvas be, mert a szóközöknél befejezi az olvas�
 
 A fájl tartalma egy hosszú stringként képzelhető el, melyben a sorokat `\n` karakterek vagy `\r\n` karakterpárok zárják. A fájl végén nincs semmilyen speciális jelzés.
 
-> Megjegyzés: _A `\n` vagy LF karakter a soremelést jelenti. A `\r` vagy CR a "carriage return" parancs, ami a villany-írógépeken a sor elejére küldte vissza a kocsit. A Windowson létrehozott fájlokban CRLF van a sorok végén. Mindenhol máshol csak LF.
+> Megjegyzés: _A `\n` vagy LF karakter a soremelést jelenti. A `\r` vagy CR a "carriage return" parancs, ami a villany-írógépeken a sor elejére küldte vissza a kocsit. A Windowson létrehozott fájlokban CRLF van a sorok végén. Mindenhol máshol csak LF._
 
-A fájlrendszer tudja, hogy hol a fájlnak a vége. Ezt a `feof` parancssal kérdezhetjük meg tőle. A válasz igaz (1), ha a "kurzorunkkal" a fájl végére értünk, és hamis (0), ha még nem. 
+Az oprendszer tudja, hogy hol van vége a fájlnak. Ezt a `feof` parancssal kérdezhetjük meg tőle. A válasz igaz (1), ha a "kurzorunkkal" a fájl végére értünk, és hamis (0), ha még nem. 
 
 ```c
 int feof(FILE* file)
@@ -82,7 +82,7 @@ int feof(FILE* file)
 A fájl végigolvasása ilyen ciklussal megy:
 
 ```c
-if (feof(file) != 0)
+while (feof(file) == 0)
 {
     fgets...
 }
