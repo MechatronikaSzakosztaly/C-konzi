@@ -215,3 +215,26 @@ int atoi(const char* str)
 ```c
 double atof(const char* str)
 ```
+
+
+Feladatok
+---------
+
+### 1. Készítsd el a Halál Hídjának virtuális őrét.
+,,Állj! Ki átkelni kíván a Halálnak Hídján, három kérdésre megfeleljen, vagy a Hídon át nem eresztem."
+
+1. Mi a te neved? (Sir Robin of Camelotti)
+2. Mit keresel, lovag? (En biz' a Szent Kelyhet)
+3. Micsoda Srí Lanka fővárosa? (Sri Jayawardenapura Kotte)
+
+Ha a lovag a három kérdésre nem helyesen felel, dobd le a hídról.
+
+### 2. Készíts egy szöveg megfordító függvényt!
+```c
+void reversestring(const char* forras, char* cel);
+```
+
+### 3. Készíts függvényt, amely megszámolja egy stringben az "a" betűket!
+```c
+int strcount(const char* miben, char betu);
+```
