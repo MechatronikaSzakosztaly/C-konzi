@@ -84,3 +84,14 @@ Happy Drink, 47.477509, 19.051127
 Sarki Tanszék, 47.477321, 19.049542
 ...
 ```
+
+### Osztályátlag
+Az iskolai enapló osztályonként egy fájlban tárolja a jegyeket. A diákok neve után vesszővel elválasztva vannak felsorolva a jegyeik. Készíts olyan programot, ami kiszámolja az osztályátlagot! Az osztályátlag az egyes emberek átlagaiból képzett átlag.
+
+```
+Boros Anna,5,4,5,5,4,3,5,4
+Cegledi Zsolt,4,5,4,3,3
+Deak Helga,4,3,3,4,4,4,5,3,4
+...
+```
+```
