@@ -169,7 +169,7 @@ _Létezik gets() függvény is, de azt tilos használni._
 ```c
 char* gets_s(char* sor, size_t n)
 ```
-Legfeljebb n-1 karaktert olvas be. Enternél vagy fájl végénél fejezi be az olvasást. Az entert is beolvassa.
+Legfeljebb n-1 karaktert olvas be. Enternél vagy fájl végénél fejezi be az olvasást. Az entert is beolvassa. A stringnet, amibe olvas, előtte érdemes kinullázni (memset).
 
 #### Nem-Windows: fgets()
 ```c
