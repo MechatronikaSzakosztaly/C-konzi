@@ -15,10 +15,12 @@ void delete_newline(char* line)
 double atlagszamitas(char* jegyek)
 {
 	int jegyszam = 0, jegyosszeg = 0;
-	char* state = jegyek;
+	char* state;
+	char* forras = jegyek;
 	while (1)
 	{
-		char* jegystr = strtok_s(NULL, ",", &state);
+		char* jegystr = strtok_s(forras, ",", &state);
+		forras = NULL;
 		if (jegystr == NULL)
 			break;
 		jegyszam++;
