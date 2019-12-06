@@ -10,7 +10,9 @@ Ez a jegyzet önmagában is olvasható, kiegészítő tananyag a tárgyhoz. Igye
 ## Felépítés
 A jegyzet markdown formában van feltöltve, itt githubon tudjátok olvasni. A `docs/` mappában találjátok hetenkénti bontásban.
 
-Akinek ez kényelmesebb, letölthető pdf formátumban is megtalálja a `pdf/` mappában.
+Akinek ez kényelmesebb, a jegyzetet letölthető pdf formátumban is megtalálja a `pdf/` mappában.
+
+A ZH felkészülésként bemutatott programok a `programs/` mappában vannak.
 
 ## Névjegy
 Révész Levente  
